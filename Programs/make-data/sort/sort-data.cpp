@@ -7,7 +7,8 @@ using namespace std;
 const int defaultNum = 100;
 
 int main(int argc, char** argv) {
-    string filename = (argc >= 2 ? argv[1] : "sort-data");
+    string dirname = (argc >= 2 ? argv[1] : "");
+    string filename = dirname + "sort-data";
     int num = (argc >= 3 ? atoi(argv[2]) : defaultNum);
     ofstream fout(filename);
     if (!fout) {

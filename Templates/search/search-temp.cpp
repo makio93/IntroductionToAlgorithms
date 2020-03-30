@@ -5,6 +5,10 @@ using namespace std;
 
 const string defaultFile = "search-data";
 
+vector<int> search(vector<int> a, int v) {
+
+}
+
 int main(int argc, char** argv)
 {
     string dataFile = (argc >= 2 ? argv[1] : defaultFile);
@@ -27,11 +31,10 @@ int main(int argc, char** argv)
         fin >> i;
         a.push_back(i);
     }
-    vector<int> b;
 
     // 探索アルゴリズムここから
 
-
+    vector<int> b = search(a, v);
 
     // ここまで
 

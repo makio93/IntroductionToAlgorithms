@@ -3,7 +3,20 @@
 #include <vector>
 using namespace std;
 
-const string defaultFile = "data";
+const string defaultFile = "sort-data";
+
+void insertion_sort(vector<int>& a) {
+    int n = a.size();
+    for (int i=1; i<n; ++i) {
+        int key = a[i];
+        int j = i-1;
+        while (j>=0 && a[j]>key) {
+            a[j+1] = a[j];
+            --j;
+        }
+        a[j+1] = key;
+    }
+}
 
 int main(int argc, char** argv)
 {
@@ -13,7 +26,7 @@ int main(int argc, char** argv)
         cout << "入力ファイルが開けません。" << endl;
         return 1;
     }
-    ofstream fout(dataFile + "sorted");
+    ofstream fout(dataFile + "-sorted");
     if (!fout) {
         cout << "出力ファイルが開けません。" << endl;
         return 1;
@@ -27,16 +40,7 @@ int main(int argc, char** argv)
 
     // ソートアルゴリズムここから
 
-    int n = a.size();
-    for (int i=1; i<n; ++i) {
-        int key = a[i];
-        int j = i-1;
-        while (j>=0 && a[j]>key) {
-            a[j+1] = a[j];
-            --j;
-        }
-        a[j+1] = key;
-    }
+    insertion_sort(a);
 
     // ここまで
 

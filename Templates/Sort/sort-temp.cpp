@@ -5,6 +5,10 @@ using namespace std;
 
 const string defaultFile = "sort-data";
 
+void sort(vector<int>& a) {
+    
+}
+
 int main(int argc, char** argv)
 {
     string dataFile = (argc >= 2 ? argv[1] : defaultFile);
@@ -28,7 +32,7 @@ int main(int argc, char** argv)
 
     // ソートアルゴリズムここから
 
-
+    sort(a);
 
     // ここまで
 
