@@ -7,7 +7,8 @@ using namespace std;
 const int defaultNum = 100;
 
 int main(int argc, char** argv) {
-    string filename = (argc >= 2 ? argv[1] : "data");
+    string dirname = (argc >= 2 ? argv[1] : "");
+    string filename = dirname + "search-data";
     int num = (argc >= 3 ? atoi(argv[2]) : defaultNum);
     ofstream fout(filename);
     if (!fout) {
@@ -15,6 +16,7 @@ int main(int argc, char** argv) {
         return 1;
     }
     srand(time(NULL));
+    fout << rand() % num << endl;
     for (int i=0; i<num; i++) {
         fout << rand() % num << (i!=num-1?' ':'\n');
     }

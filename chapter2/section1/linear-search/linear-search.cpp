@@ -3,7 +3,7 @@
 #include <vector>
 using namespace std;
 
-const string defaultFile = "sort-data";
+const string defaultFile = "search-data";
 
 int main(int argc, char** argv)
 {
@@ -13,27 +13,38 @@ int main(int argc, char** argv)
         cout << "入力ファイルが開けません。" << endl;
         return 1;
     }
-    ofstream fout(dataFile + "-sorted");
+    ofstream fout(dataFile + "-searched");
     if (!fout) {
         cout << "出力ファイルが開けません。" << endl;
         if (fin) fin.close();
         return 1;
     }
+    int v;
+    fin >> v;
     vector<int> a;
     while (!fin.eof()) {
         int i;
         fin >> i;
         a.push_back(i);
     }
+    vector<int> b;
 
-    // ソートアルゴリズムここから
+    // 探索アルゴリズムここから
 
-
+    int n = a.size();
+    for (int i=0; i<n; ++i) {
+        if (a[i] == v) {
+            b.push_back(i+1);
+        }
+    }
 
     // ここまで
 
-    for (int i=0; i<int(a.size()); ++i) {
-        fout << a[i] << (i!=int(a.size())-1?' ':'\n');
+    if (b.empty()) fout << "NIL" << endl;
+    else {
+        for (int i=0; i<int(b.size()); ++i) {
+            fout << b[i] << (i!=int(b.size())-1?' ':'\n');
+        }
     }
     fin.close();
     fout.close();
