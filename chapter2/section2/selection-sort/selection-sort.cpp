@@ -1,18 +1,20 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <utility>
 using namespace std;
 
-const string defaultFile = "search-data";
+const string defaultFile = "sort-data";
 
-int linear_search(vector<int> a, int v) {
+void sort(vector<int>& a) {
     int n = a.size();
-    for (int i=0; i<n; ++i) {
-        if (a[i] == v) {
-            return i+1;
+    for (int i=0; i<n-1; ++i) {
+        int t = i;
+        for (int j=i+1; j<n; ++j) {
+            if (a[j] < a[t]) t = j;
         }
+        swap(a[i], a[t]);
     }
-    return 0;
 }
 
 int main(int argc, char** argv)
@@ -23,14 +25,12 @@ int main(int argc, char** argv)
         cout << "入力ファイルが開けません。" << endl;
         return 1;
     }
-    ofstream fout(dataFile + "-searched");
+    ofstream fout(dataFile + "-sorted");
     if (!fout) {
         cout << "出力ファイルが開けません。" << endl;
         if (fin) fin.close();
         return 1;
     }
-    int v;
-    fin >> v;
     vector<int> a;
     while (!fin.eof()) {
         int i;
@@ -38,14 +38,15 @@ int main(int argc, char** argv)
         a.push_back(i);
     }
 
-    // 探索アルゴリズムここから
+    // ソートアルゴリズムここから
 
-    int i = linear_search(a, v);
+    sort(a);
 
     // ここまで
 
-    if (i == 0) fout << "NIL" << endl;
-    else fout << i << endl;
+    for (int i=0; i<int(a.size()); ++i) {
+        fout << a[i] << (i!=int(a.size())-1?' ':'\n');
+    }
     fin.close();
     fout.close();
     return 0;

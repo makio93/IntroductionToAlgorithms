@@ -5,14 +5,15 @@ using namespace std;
 
 const string defaultFile = "search-data";
 
-int linear_search(vector<int> a, int v) {
+vector<int> linear_search(vector<int> a, int v) {
+    vector<int> b;
     int n = a.size();
     for (int i=0; i<n; ++i) {
         if (a[i] == v) {
-            return i+1;
+            b.push_back(i+1);
         }
     }
-    return 0;
+    return b;
 }
 
 int main(int argc, char** argv)
@@ -40,12 +41,16 @@ int main(int argc, char** argv)
 
     // 探索アルゴリズムここから
 
-    int i = linear_search(a, v);
+    vector<int> b = linear_search(a, v);
 
     // ここまで
 
-    if (i == 0) fout << "NIL" << endl;
-    else fout << i << endl;
+    if (b.empty()) fout << "NIL" << endl;
+    else {
+        for (int i=0; i<int(b.size()); ++i) {
+            fout << b[i] << (i!=int(b.size())-1?' ':'\n');
+        }
+    }
     fin.close();
     fout.close();
     return 0;
