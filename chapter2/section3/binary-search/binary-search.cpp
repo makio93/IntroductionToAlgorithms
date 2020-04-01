@@ -3,10 +3,17 @@
 #include <vector>
 using namespace std;
 
-const string defaultFile = "search-data";
+const string defaultFile = "search-sorted-data";
 
-int search(vector<int> a, int v) {
-
+int binary_search(vector<int> a, int v) {
+    int l = 0, r = a.size()-1;
+    while (r > l) {
+        int c = (l + r) / 2;
+        if (a[c] >= v) r = c;
+        else l = c + 1;
+    }
+    if (a[l] == v) return l;
+    else return -1;
 }
 
 int main(int argc, char** argv)
@@ -34,7 +41,7 @@ int main(int argc, char** argv)
 
     // 探索アルゴリズムここから
 
-    int i = search(a, v);
+    int i = binary_search(a, v);
 
     // ここまで
 

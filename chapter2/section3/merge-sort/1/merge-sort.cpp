@@ -1,19 +1,37 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include <utility>
 using namespace std;
 
 const string defaultFile = "sort-data";
+const int INF = INT32_MAX;
 
-void selection_sort(vector<int>& a) {
-    int n = a.size();
-    for (int i=0; i<n-1; ++i) {
-        int t = i;
-        for (int j=i+1; j<n; ++j) {
-            if (a[j] < a[t]) t = j;
+void merge(vector<int>& a, int p, int q, int r) {
+    int n1 = q-p+1, n2 = r-q;
+    vector<int> L(n1+1), R(n2+1);
+    int i, j;
+    for (i=0; i<n1; ++i) L[i] = a[p+i-1];
+    for (j=0; j<n2; ++j) R[j] = a[q+j];
+    L[i] = INF; R[j] = INF;
+    i = j = 0;
+    for (int k=0; k<r-p+1; ++k) {
+        if (L[i] < R[j]) {
+            a[p+k-1] = L[i];
+            ++i;
         }
-        swap(a[i], a[t]);
+        else {
+            a[p+k-1] = R[j];
+            ++j;
+        }
+    }
+}
+
+void merge_sort(vector<int>& a, int p, int r) {
+    if (r > p) {
+        int q = (p + r) / 2;
+        merge_sort(a, p, q);
+        merge_sort(a, q+1, r);
+        merge(a, p, q, r);
     }
 }
 
@@ -40,7 +58,7 @@ int main(int argc, char** argv)
 
     // ソートアルゴリズムここから
 
-    selection_sort(a);
+    merge_sort(a, 1, a.size());
 
     // ここまで
 
