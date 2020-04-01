@@ -6,3 +6,13 @@
 ◎マージソートについてmerge-sort.cppのプログラムを書け。
 ○ソート用データ
 ・sort-data.cppで生成せよ。
+◎練習問題2について同様にmerge-sort2.cppでプログラムを書け。
+◎練習問題5についてプログラムを2つ書け。
+○プログラム名
+・繰り返し型：binary-search.cpp
+・再帰型：binary-search2.cpp
+○探索用データ
+・search-sorted-data.cppで生成せよ。
+◎練習問題7についてpractice7.cppでプログラムを書け。
+○探索用データ
+・practice7-data.cppで生成せよ。
