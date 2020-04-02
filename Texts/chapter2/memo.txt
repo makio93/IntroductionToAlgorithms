@@ -16,3 +16,17 @@
 ◎練習問題7についてpractice7.cppでプログラムを書け。
 ○探索用データ
 ・practice7-data.cppで生成せよ。
+
+●2章章末問題
+◎バブルソートについてbubble-sort.cppでプログラムを書け。
+○ソート用データ
+・sort-data.cppで生成せよ。
+◎Hornerの公式について計算するプログラムを2通りで書け
+○プログラム名
+・実行時間O(n)のもの：horner.cpp
+・実行時間O(n^2)のもの：horner2.cpp
+○計算用データ
+・horner-data.cppで作成せよ。
+◎配列の反転数を決定するプログラムをinversion.cppで書け。
+○使用するデータ
+・sort-data.cppで作成せよ。
